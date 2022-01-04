@@ -48,6 +48,6 @@ I want to be able to make a withdrawal
 
 ```
 As a user
-So I can see a history of my transactions
+So I can see the history of my transactions
 I want to be able to see my account statement
 ```
