@@ -2,22 +2,17 @@
 
 # the main class
 class Account
-  attr_reader :balance, :transactions_log
+  attr_reader :transactions
 
   def initialize
-    @balance = 0
-    @transactions_log = []
+    @transactions = []
   end
 
   def deposite(amount)
-    @balance += amount
-    transactions_log.push(amount)
+    @transactions << [amount]
   end
 
   def withdraw(amount)
-    raise 'Error! Insufficient funds' if (@balance - amount).negative?
-
-    @balance -= amount
-    transactions_log.push(-amount)
+    @transactions << [-amount]
   end
 end
