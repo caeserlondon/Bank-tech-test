@@ -20,4 +20,11 @@ class Account
     @balance -= debit
     @transactions << [date, '', debit, balance]
   end
+
+  def statement_printer
+    puts 'date || credit || debit || balance'
+    @transactions.map do |tr|
+      puts "#{tr[0]} || #{tr[1]} || #{tr[2]} || #{tr[3]}"
+    end
+  end
 end

@@ -2,11 +2,10 @@
 
 require 'account'
 
-describe 'Account' do
-  # to keep records of the account transactions
+context 'Account' do
   let(:account) { Account.new }
 
-  describe 'deposit' do
+  describe '#deposit' do
     it 'accepts credit transaction' do
       account.deposit(10, '10-01-2023')
       expect(account.transactions).to include(['10-01-2023', 10, '', 10])
@@ -17,7 +16,7 @@ describe 'Account' do
     end
   end
 
-  describe 'withdraw' do
+  describe '#withdraw' do
     it 'accepts debit transaction' do
       account.deposit(10, '10-01-2023')
       account.withdraw(10, '14-01-2023')
@@ -32,6 +31,15 @@ describe 'Account' do
 
     it 'Raises an error if Insufficient funds' do
       expect { account.withdraw(10, '14-01-2023') }.to raise_error('Error! Insufficient funds')
+    end
+  end
+
+  describe '#statement_printer' do
+    it 'prints the user statement' do
+      account.deposit(10, '10-01-2023')
+      expect do
+        account.statement_printer
+      end.to output("date || credit || debit || balance\n10-01-2023 || 10 ||  || 10\n").to_stdout
     end
   end
 end
