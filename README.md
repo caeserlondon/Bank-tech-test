@@ -1,5 +1,10 @@
 # Bank tech test
 
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rubystyle.guide)
+[![Build Status](https://github.com/rspec/rspec-mocks/workflows/RSpec%20CI/badge.svg)](https://github.com/rspec/rspec-mocks/actions)
+
+
 ### Requirements
 
 * we should be able to interact with our code via a REPL like IRB.
@@ -50,4 +55,36 @@ I want to be able to make a withdrawal
 As a user
 So I can see the history of my transactions
 I want to be able to see my account statement
+```
+
+- **Nouns :**
+
+  - Account
+
+- **verbs :**
+
+  - deposit,
+  - withdrow,
+  - print statement
+
+  <br>
+
+
+
+
+
+#### To run locally:  
+```
+$ git clone https://github.com/caeserlondon/Bank-tech-test  
+$ bundle install 
+```
+#### To run the tests:  
+```
+$ rspec
+```
+
+#### To run linting:
+
+```
+$ rubocop
 ```
