@@ -47,9 +47,9 @@ describe 'Account' do
     it 'prints the user statement' do
       account.deposit(10)
       @date = Time.now.strftime('%d/%m/%Y')
-      expect do
-        account.statement_printer
-      end.to output("date || credit || debit || balance \n #{@date} || 10 ||  || 10\n").to_stdout
+      expect { account.statement_printer }.to output(
+        "date || credit || debit || balance \n #{@date} || 10 ||  || 10\n"
+      ).to_stdout
     end
   end
 end
