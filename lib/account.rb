@@ -1,6 +1,6 @@
+# !/usr/bin/env ruby
 # frozen_string_literal: true
 
-# !/usr/bin/env ruby
 # the main class
 class Account
   attr_reader :transactions, :balance
