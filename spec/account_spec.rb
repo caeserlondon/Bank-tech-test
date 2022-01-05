@@ -2,7 +2,7 @@
 
 require 'account'
 
-context 'Account' do
+describe Account do
   let(:account) { Account.new }
 
   describe '#deposit' do
@@ -13,6 +13,16 @@ context 'Account' do
 
     it 'Adds the deposit value to the balance' do
       expect { account.deposit(10, '10-01-2023') }.to change { account.balance }.by(10)
+    end
+
+    it 'raises an error if the deposit is zero' do
+      expect { account.deposit(0, '10-01-2023') }.to raise_error('Transaction not allowed! Please select another amount to deposit.')
+    end
+    it 'raises an error if the deposit is a negative amount' do
+      expect do
+        account.deposit(-10,
+                        '10-01-2023')
+      end.to raise_error('Transaction not allowed! Please select a positive amount to deposit.')
     end
   end
 
@@ -30,7 +40,11 @@ context 'Account' do
     end
 
     it 'Raises an error if Insufficient funds' do
-      expect { account.withdraw(10, '14-01-2023') }.to raise_error('Error! Insufficient funds')
+      expect { account.withdraw(10, '14-01-2023') }.to raise_error('Transaction not allowed! Insufficient funds!')
+    end
+
+    it 'raises an error if withdrawing zero' do
+      expect { account.withdraw(0, '14-01-2023') }.to raise_error('Transaction not allowed! Please select an amount to withdraw.')
     end
   end
 
