@@ -8,11 +8,11 @@ class Account
     @transactions = []
   end
 
-  def deposite(amount)
-    @transactions << [amount]
+  def deposite(credite, date)
+    @transactions << [credite, date]
   end
 
-  def withdraw(amount)
-    @transactions << [-amount]
+  def withdraw(debit, date)
+    @transactions << [-debit, date]
   end
 end
