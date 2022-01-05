@@ -16,6 +16,7 @@ class Account
 
   def withdraw(amount)
     raise 'Error! Insufficient funds' if (@balance - amount).negative?
+
     @balance -= amount
     transactions_log.push(-amount)
   end

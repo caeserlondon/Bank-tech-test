@@ -21,5 +21,11 @@ describe Account do
       account.deposite(1)
       expect { account.withdraw(1) }.to change { account.balance }.by(-1)
     end
+
+    it 'Records the transaction to the transaction log' do
+      account = Account.new
+      account.deposite(1)
+      expect { account.withdraw(1) }.to change { account.transactions_log.length }.by(1)
+    end
   end
 end
