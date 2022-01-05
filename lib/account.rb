@@ -9,12 +9,14 @@ class Account
     @balance = 0
   end
 
-  def deposite(credite, date)
+  def deposit(credite, date)
     @balance += credite
     @transactions << [credite, date]
   end
 
   def withdraw(debit, date)
+    raise 'Error! Insufficient funds' if (@balance - debit).negative?
+
     @balance -= debit
     @transactions << [-debit, date]
   end
